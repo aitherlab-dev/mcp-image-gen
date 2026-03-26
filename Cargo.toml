@@ -1,0 +1,29 @@
+[package]
+name = "mcp-image-gen"
+version = "0.1.0"
+edition = "2021"
+description = "MCP server for local image generation via diffusion-rs"
+
+[[bin]]
+name = "mcp-image-gen"
+path = "src/main.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+dirs = "6"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+chrono = "0.4"
+sha2 = "0.10"
+diffusion-rs = "0.1"
+diffusion-rs-sys = "0.1"
+hf-hub = { version = "0.4", features = ["ureq"], default-features = false }
+
+
+[features]
+default = []
+cuda = ["diffusion-rs/cuda"]
+
+[dev-dependencies]
+tempfile = "3"
